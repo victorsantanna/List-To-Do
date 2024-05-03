@@ -57,7 +57,7 @@ export default {
         this.newTodo = {
           done: false
         };
-        localStorage.setItem("todos", JSON.stringify(this.todos) );
+       
       } else{
         alert('Por Gentileza Digite uma Tarefa!')
       }
