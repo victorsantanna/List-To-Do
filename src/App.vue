@@ -1,5 +1,7 @@
 <template>
+
 <section class="todo-list">
+
   <h3>Lista de tarefas</h3>
     
 
@@ -16,13 +18,17 @@
       >
         <p>{{ todo.text }}</p>
       </div>
-     
-      <button class="clear" @click="todos=[]" v-if="todos.length">Limpar Tudo</button>
+
+     <!--
+       <button class="clear" @click="todos=[]" v-if="todos.length">Limpar Tudo</button>
+     -->
      
         
-      <limparTudo :todo="todos" @clear="clearAllTodos" v-if="todos.length" />
+      <limparTudo  @clear="clearAllTodos" v-if="todos.length" />
   </div>
+
 </section>
+
 </template>
 
 <script>
