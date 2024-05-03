@@ -1,42 +1,43 @@
 <template>
 <section class="todo-list">
     <h3>Lista de tarefas</h3>
+    
 
-    <input type="text" placeholder="Digite sua tarefa" v-model="newTodo.text" class="input-todo"> 
-    <button class="add" @click="addTodo()">Adicionar</button>
+    <input type="text" placeholder="Digite sua tarefa" v-model="newTodo.text" class="input-todo"  @keyup.enter="addTodo"> 
+    <button class="add" @click="addTodo()" >Adicionar</button>
       
     <div class="all-todo">
       <div 
-      v-for="todo in todos" 
-      :key="todo" 
-      class="single-todo"
-      :class="{done : todo.done}"
+        v-for="todo in todos" 
+        :key="todo" 
+        class="single-todo"
+        :class="{done : todo.done}"
+        @click="todo.done = !todo.done"
       >
         <p>{{ todo.text }}</p>
       </div>
-
-    </div>
+     
+        <button class="clear" @click="todos=[]" v-if="todos.length">Limpar Tudo</button>
+     
+        
+      <limparTudo :todo="todos" @clear="clearAllTodos" v-if="todos.length" />
+  </div>
 
 </section>
-
 
 </template>
 
 <script>
-const todos = [
-  {
-    text: 'Aprender Html',
-    done: false
-  },
-  {
-    text: 'Aprender vuejs',
-    done: false
-  },
-]
+import limparTudo from './components/limparTudo.vue'
+
+const todos = []
 
 
 export default {
   name: 'App',
+  components:{
+    limparTudo,
+  },
   data(){
     return{
       todos,
@@ -46,13 +47,28 @@ export default {
     }
   },
   methods:{
+    clearAllTodos(){
+      this.todos = [];
+      localStorage.removeItem('todos');
+    },
     addTodo: function(){
-      this.todos.push(this.newTodo);
-      this.newTodo = {
-        done: false
-      };
-    }
-  }
+      if(this.newTodo.text){
+        this.todos.push(this.newTodo);
+        this.newTodo = {
+          done: false
+        };
+        localStorage.setItem("todos", JSON.stringify(this.todos) );
+      } else{
+        alert('Por Gentileza Digite uma Tarefa!')
+      }
+    },
+  },
+  created(){
+    this.todos = localStorage.getItem("todos") ? JSON.parse(localStorage.getItem("todos")) : this.todos;
+  },
+  updated(){
+    localStorage.setItem("todos", JSON.stringify(this.todos))
+  },
 }
 
 </script>
@@ -83,7 +99,7 @@ export default {
 
 .all-todo .single-todo.done p {
     text-decoration: line-through;
-  
+    text-decoration-thickness: 2px; /* Ajuste o valor conforme necessário */
 
 }
 
@@ -91,7 +107,7 @@ input {
     box-sizing: border-box;
     height: 35px;
     border-radius: .40rem;
-    width: 40%;
+    width: 35%;
     border: 2px solid lightgrey;
     margin-top: 32px;
 }
@@ -110,4 +126,15 @@ button.add {
     border: 1px solid  #007bff;
     margin-left: 2px;
 }
+
+button.clear {
+    background-color: #dc3545;
+    border: 1px solid #dc3545;
+    display: block;
+    margin: auto;
+    margin-top: 20px;
+    width: 20%;
+    font-size: 19px;
+}
+
 </style>
