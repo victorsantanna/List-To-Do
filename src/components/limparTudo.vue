@@ -5,7 +5,7 @@
 <script>
 export default {
     props:{
-        todos: Array,
+    
     },
     methods:{
         clearTodos(){
@@ -18,8 +18,8 @@ export default {
 
 <style scoped>
 button.clear {
-    background-color: #35d1dc;
-    border: 1px solid #35d1dc;
+    background-color: #dc3545;
+    border: 1px solid #dc3545;
     display: block;
     margin: auto;
     margin-top: 20px;
