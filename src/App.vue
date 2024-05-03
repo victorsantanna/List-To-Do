@@ -1,12 +1,12 @@
 <template>
 <section class="todo-list">
-    <h3>Lista de tarefas</h3>
+  <h3>Lista de tarefas</h3>
     
 
     <input type="text" placeholder="Digite sua tarefa" v-model="newTodo.text" class="input-todo"  @keyup.enter="addTodo"> 
-    <button class="add" @click="addTodo()" >Adicionar</button>
+    <button class="add" @click="addTodo()"> Adicionar </button>
       
-    <div class="all-todo">
+  <div class="all-todo">
       <div 
         v-for="todo in todos" 
         :key="todo" 
@@ -17,21 +17,19 @@
         <p>{{ todo.text }}</p>
       </div>
      
-        <button class="clear" @click="todos=[]" v-if="todos.length">Limpar Tudo</button>
+      <button class="clear" @click="todos=[]" v-if="todos.length">Limpar Tudo</button>
      
         
       <limparTudo :todo="todos" @clear="clearAllTodos" v-if="todos.length" />
   </div>
-
 </section>
-
 </template>
 
 <script>
+
 import limparTudo from './components/limparTudo.vue'
 
 const todos = []
-
 
 export default {
   name: 'App',
@@ -51,7 +49,7 @@ export default {
       this.todos = [];
       localStorage.removeItem('todos');
     },
-    addTodo: function(){
+    addTodo(){
       if(this.newTodo.text){
         this.todos.push(this.newTodo);
         this.newTodo = {
@@ -99,7 +97,7 @@ export default {
 
 .all-todo .single-todo.done p {
     text-decoration: line-through;
-    text-decoration-thickness: 2px; /* Ajuste o valor conforme necessário */
+    text-decoration-thickness: 2px; 
 
 }
 
