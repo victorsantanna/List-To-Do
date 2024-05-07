@@ -2,11 +2,12 @@
 
 <section class="todo-list">
 
-  <h3>Lista de tarefas</h3>
+  <h3>Lista de Tarefas</h3>
     
-
-    <input type="text" placeholder="Digite sua tarefa" v-model="newTodo.text" class="input-todo"  @keyup.enter="addTodo"> 
+  <div class="input-todo">
+    <input type="text" placeholder="Digite sua tarefa" v-model="newTodo.text" @keyup.enter="addTodo"> 
     <button class="add" @click="addTodo()"> Adicionar </button>
+  </div>
       
   <div class="all-todo">
       <div 
@@ -19,15 +20,14 @@
         <p>{{ todo.text }}</p>
       </div>
 
-     <!--
-       <button class="clear" @click="todos=[]" v-if="todos.length">Limpar Tudo</button>
-     -->
-     
         
+    </div>
+  
       <limparTudo  @clear="clearAllTodos" v-if="todos.length" />
-  </div>
 
-</section>
+    
+    
+  </section>
 
 </template>
 
@@ -78,26 +78,29 @@ export default {
 </script>
 
 <style>
-#app {
+
+section{
+    font-family: Helvetica, Arial, sans-serif;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    color: #2c3e50;
+    margin-top: 60px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
   
-  font-family: Avenir, Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
-  margin-top: 60px;
 }
 
-.todo-list h3{
+ h3{
   font-size: 30px;
-  font-family:Verdana, Geneva, Tahoma, sans-serif;
-  margin-top: 30px;
-
+  font-family: Tahoma, sans-serif;
+  
 }
 
 .all-todo .single-todo p{
   font-size: 19px;
-  font-family: Verdana, Geneva, Tahoma, sans-serif;
+  font-family: Tahoma, sans-serif;
+  font-weight:bold;
   color: #2c3e50;
 }
 
@@ -108,20 +111,24 @@ export default {
 }
 
 input {
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    font-size: 16px;
     box-sizing: border-box;
-    height: 35px;
-    border-radius: .40rem;
-    width: 35%;
-    border: 2px solid lightgrey;
-    margin-top: 32px;
+    height: 40px;
+    border-radius: 10px;
+    width: 300px;
+    border: 1px solid lightgrey;
+    margin-top: 12px;
 }
 
 button {
+   font-family: Verdana, Geneva, Tahoma, sans-serif;
+    font-size: 15px;
     background-color: transparent;
     cursor: pointer;
     box-sizing: border-box;
-    height: 34px;
-    border-radius: .25rem;
+    height: 37px;
+    border-radius: 10px;
     color: #fff;
 }
 
@@ -130,15 +137,32 @@ button.add {
     border: 1px solid  #007bff;
     margin-left: 2px;
 }
+button.add:hover{
+  background-color: rgb(54, 0, 248);
+  border: 1px solid rgb(54, 0, 248);
+}
 
-button.clear {
-    background-color: #dc3545;
-    border: 1px solid #dc3545;
-    display: block;
-    margin: auto;
-    margin-top: 20px;
-    width: 20%;
-    font-size: 19px;
+
+
+
+@media (max-width: 661px) {
+
+  section, .input-todo{
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+
+  }
+    input {
+      margin-bottom: 12px; 
+      margin-top: 10px;
+    }
+
+    button.add {
+      width: 300px;
+    }
+
 }
 
 </style>
