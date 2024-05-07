@@ -19,10 +19,8 @@ export default {
 <style scoped>
     button.clear {
         background-color: #dc3545;
-        border: 1px solid #dc3545;
-        display: block;
-        margin: auto;
-        margin-top: 20px;
+        border: 1px solid #dc3545;      
+        margin-top: 10px;
         width: 300px;
         font-size: 19px;
     }
@@ -32,15 +30,13 @@ export default {
         border: 1px solid #f00018;
     }
 
-@media (max-width: 661px){
+@media only screen and (max-width: 767px){
     
     button.clear {
         display: flex;
         flex-direction: column;
         align-items: center;
         justify-content: center;
-        margin-top: auto; 
-        margin-bottom: auto; 
         width: 300px;
     }
 }
