@@ -80,7 +80,7 @@ export default {
 <style>
 
 section{
-    font-family: Helvetica, Arial, sans-serif;
+    font-family: Tahoma, sans-serif;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
     color: #2c3e50;
@@ -92,16 +92,13 @@ section{
 }
 
  h3{
-  font-size: 30px;
-  font-family: Tahoma, sans-serif;
-  
+   font-size: 30px;
 }
 
 .all-todo .single-todo p{
-  font-size: 19px;
-  font-family: Tahoma, sans-serif;
-  font-weight:bold;
-  color: #2c3e50;
+    font-size: 19px;
+    font-weight:500;
+    color: #2c3e50;
 }
 
 .all-todo .single-todo.done p {
@@ -111,7 +108,7 @@ section{
 }
 
 input {
-    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    font-family: Verdana, sans-serif;
     font-size: 16px;
     box-sizing: border-box;
     height: 40px;
@@ -122,7 +119,7 @@ input {
 }
 
 button {
-   font-family: Verdana, Geneva, Tahoma, sans-serif;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
     font-size: 15px;
     background-color: transparent;
     cursor: pointer;
@@ -138,14 +135,14 @@ button.add {
     margin-left: 2px;
 }
 button.add:hover{
-  background-color: rgb(54, 0, 248);
-  border: 1px solid rgb(54, 0, 248);
+    background-color: rgb(54, 0, 248);
+    border: 1px solid rgb(54, 0, 248);
 }
 
 
 
 
-@media (max-width: 661px) {
+@media  only screen and (max-width: 767px) {
 
   section, .input-todo{
       display: flex;
@@ -161,8 +158,11 @@ button.add:hover{
 
     button.add {
       width: 300px;
+      font-size: 17px;
     }
 
 }
+
+
 
 </style>
